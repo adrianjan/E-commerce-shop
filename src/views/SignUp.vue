@@ -38,16 +38,6 @@ export default {
 
 <style>
 
-.signup{
-    height: 100vh;
-    width: 100%;
-    background: url(../assets/bg-1.png) no-repeat;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
 .signup__createAccount{
     display: none;
 }
@@ -62,41 +52,6 @@ export default {
     min-height: 300px;
     background-color: #FF5964;
     clip-path: polygon(0 0, 100% 0, 100% 36%, 0 60%);
-}
-
-.signup__h1{
-    font-size: 3.5em;
-    font-weight: bold;
-    margin-top: 0;
-    padding-top: 10%;
-    color: #F5DFBB;
-    z-index: 5;
-}
-
-.signup__form{
-    flex-grow: 1;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.form__input{
-    width: 100%;
-    background-color: #F5DFBB;
-    border: 2px solid #0E9594;
-    padding: 25px 0 8px 0;
-    text-align: center;
-}
-
-.input__container{
-    width: 50%;
-    position: relative;
-    min-width: 220px;
-}
-
-.form__input::placeholder{
-    color: #0E9594;
-    text-align: center;
-    font-size: 1.8em;
 }
 
 .checkbox-box{
@@ -140,74 +95,7 @@ export default {
     text-align: right;
 }
 
-
-@media (orientation: landscape) and (max-width: 768px){
-    .signup{
-        height: 100vw;
-    }
-}
-
 @media (min-width: 768px){
-    .signup{
-        background: url(../assets/bg-2.jpg) no-repeat;
-        background-size: cover;
-    }
-    .signup__cover{
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, .4);
-        z-index: 1;
-    }
-    
-    .signup__form{
-        z-index: 3;
-    }
-
-    .signup__rectangle{
-        clip-path: polygon(0 0, 100% 0, 100% 65%, 0 80%);
-        z-index: 3;
-    }
-
-    .signup__h1{
-        font-size: 4.5em;
-    }
-
-    .input__container::before{
-        content: '';
-        position: absolute;
-        width: 80%;
-        height: 1px;
-        bottom: 25px;
-        left: 10%;
-        background-color: #442B48;
-    }
-
-    .form__input{
-        width: 100%;
-        border: none;
-        border-radius: 15px;
-        padding: 50px 0 30px 0;
-    }
-
-    .form__input::placeholder{
-        font-size: 1.7em;
-        color: rgba(68, 43, 72, .5);
-    }
-
-    .input__container::after{
-        content: attr(data-text);
-        color: #442B48;
-        font-weight: bold;
-        position: absolute;
-        font-size: 1.2em;
-        top: 5px;
-        left: 10%;
-    }
-
     .conditions-text{
         font-size: 1.3em;
     }
@@ -247,46 +135,6 @@ export default {
     .signup__createAccount{
         height: 100%;
         order: 2;
-    }
-
-    .signup__h1{
-        color: #442B48;
-        width: 70%;
-        text-align: left;
-    }
-
-    .signup__h1--none{
-        display: none;
-    }
-
-    .signup__form{
-        width: auto;
-        order: 1;
-    }
-
-    .form__input{
-        width: 100%;
-        max-width: 800px;
-    }
-
-    .form__input::placeholder{
-        font-size: 1.8em;
-    }
-
-    .form__label{
-        position: absolute;
-        color: red;
-        top: 0;
-        left: 0;
-    }
-
-    .checkbox-box{
-        width: 30%;
-        max-width: 500px;
-    }
-
-    .signup__img{
-        padding: 0;
     }
 }
 
