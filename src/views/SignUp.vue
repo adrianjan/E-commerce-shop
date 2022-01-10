@@ -1,7 +1,7 @@
 <template>
     <section class="signup">
         <div class="signup__rectangle">
-            <h1 class="__rectangle-h1">Sign Up</h1>
+            <h1 class="signup__h1">Sign Up</h1>
         </div>
         <form action="#" class="signup__form flex">
             <input type="text" name="username" id="username" class="form__input" placeholder="Username">
@@ -31,39 +31,46 @@ export default {
     background: url(../assets/bg-1.png) no-repeat;
     background-size: cover;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: -2;
 }
 
-.signup__rectangle{
-    position:absolute;
+.signup__createAccount{
+    display: none;
+}
+
+.signup::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
     height: 30vw;
     min-height: 300px;
-    width: 100%;
     background-color: #FF5964;
     clip-path: polygon(0 0, 100% 0, 100% 36%, 0 60%);
+    z-index: -1;
 }
 
-.__rectangle-h1{
+.signup__h1{
     font-size: 3.5em;
     font-weight: bold;
     margin-top: 0;
     padding-top: 10%;
     color: #F5DFBB;
+    z-index: 5;
 }
 
 .signup__form{
-    height: 80%;
-    width: 100%;
+    flex-grow: 1;
     align-items: center;
     justify-content: space-evenly;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 .form__input{
     width: 50%;
     min-width: 220px;
-    max-width: 300px;
     background-color: #F5DFBB;
     border: 2px solid #0E9594;
     padding: 25px 0 8px 0;
@@ -80,7 +87,6 @@ export default {
     display: flex;
     justify-content:space-between;
     min-width: 220px;
-    max-width: 300px;
 }
 
 .checkbox{
@@ -118,9 +124,88 @@ export default {
 }
 
 
-@media (orientation: landscape){
+@media (orientation: landscape) and (max-width: 768px){
     .signup{
-    height: 100vw;
+        height: 100vw;
+    }
+}
+
+@media (min-width: 768px){
+    .signup{
+        background: url(../assets/bg-2.jpg) no-repeat;
+        background-size: cover;
+        z-index: -100;
+    }
+    .signup::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, .4);
+        z-index: -200;
+    }
+
+    .signup::after{
+        clip-path: polygon(0 0, 100% 0, 100% 65%, 0 80%);
+    }
+
+    .signup__h1{
+        font-size: 4.5em;
+    }
+
+    .form__input{
+        padding: 40px 0 20px 0;
+    }
+
+    .form__input::placeholder{
+        font-size: 2.8em;
+    }
+
+    .conditions-text{
+        font-size: 1.8em;
+    }
+
+    .checkbox{
+        height: 60px;
+        width: 60px;
+    }
+
+    .checkbox:checked::before {
+        font-size: 3.5em;
+    }
+}
+
+@media (min-width: 1305px){
+    .signup{
+        background: url(../assets/bg-3.jpg) no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .signup::after{
+        display: none;
+    }
+
+    .signup__createAccount{
+        display: block;
+    }
+
+    .signup__rectangle{
+        display: none;
+    }
+
+    .signup__createAccount{
+        height: 100%;
+        order: 2;
+    }
+
+    .signup__form{
+        width: auto;
+        height: 100%;
+        order: 1;
     }
 }
 

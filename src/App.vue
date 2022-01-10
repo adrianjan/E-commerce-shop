@@ -62,4 +62,17 @@ html, body{
   transform: rotate(5deg);
 }
 
+@media (min-width: 768px){
+  .button{
+    padding: 40px 105px;
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 1305px){
+
+
+
+}
+
 </style>
