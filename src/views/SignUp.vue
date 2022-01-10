@@ -1,16 +1,29 @@
 <template>
     <section class="signup">
+        <div class="signup__cover"></div>
         <div class="signup__rectangle">
-            <h1 class="signup__h1">Sign Up</h1>
+        </div>
+        <h1 class="signup__h1 signup__h1--none">Sign Up</h1>
+        <div class="signup__createAccount">
+            <h1 class="signup__h1">Create your account</h1>
+            <img class="signup__img" src="../assets/create-your-account.svg" alt="Create your account">
         </div>
         <form action="#" class="signup__form flex">
-            <input type="text" name="username" id="username" class="form__input" placeholder="Username">
-            <input type="email" name="email" id="email" class="form__input" placeholder="E-mail">
-            <input type="password" name="password" id="password" class="form__input" placeholder="Password">
-            <input type="repeatPassword" name="repeatPassword" id="repeatPassword" class="form__input" placeholder="Repeat password">
+            <div class="input__container" data-text="Username">
+                <input type="text" name="Username" id="username" class="form__input" placeholder="Username">
+            </div>
+            <div class="input__container" data-text="E-mail">
+                <input type="email" name="E-mail" id="email" class="form__input" placeholder="E-mail">
+            </div>
+            <div class="input__container" data-text="Password">
+                <input type="password" name="Password" id="password" class="form__input" placeholder="Password">
+            </div>
+            <div class="input__container" data-text="Repeat password">
+                <input type="password" name="Repeat password" id="repeatPassword" class="form__input" placeholder="Repeat password">
+            </div>
             <div class="checkbox-box">
-            <input type="checkbox" name="conditions" id="conditions" class="checkbox">
-            <label for="conditions" class="conditions-text">I accept terms & conditions</label>
+                <input type="checkbox" name="conditions" id="conditions" class="checkbox">
+                <label for="conditions" class="conditions-text">I accept terms & conditions</label>
             </div>
             <button type="submit" class="button button__transformed"><span class="button__span">Sign Up</span></button>
         </form>
@@ -33,14 +46,13 @@ export default {
     position: relative;
     display: flex;
     flex-direction: column;
-    z-index: -2;
 }
 
 .signup__createAccount{
     display: none;
 }
 
-.signup::after{
+.signup__rectangle{
     position: absolute;
     top: 0;
     left: 0;
@@ -50,7 +62,6 @@ export default {
     min-height: 300px;
     background-color: #FF5964;
     clip-path: polygon(0 0, 100% 0, 100% 36%, 0 60%);
-    z-index: -1;
 }
 
 .signup__h1{
@@ -69,11 +80,17 @@ export default {
 }
 
 .form__input{
-    width: 50%;
-    min-width: 220px;
+    width: 100%;
     background-color: #F5DFBB;
     border: 2px solid #0E9594;
     padding: 25px 0 8px 0;
+    text-align: center;
+}
+
+.input__container{
+    width: 50%;
+    position: relative;
+    min-width: 220px;
 }
 
 .form__input::placeholder{
@@ -134,9 +151,8 @@ export default {
     .signup{
         background: url(../assets/bg-2.jpg) no-repeat;
         background-size: cover;
-        z-index: -100;
     }
-    .signup::before{
+    .signup__cover{
         content: '';
         position: absolute;
         top: 0;
@@ -144,36 +160,65 @@ export default {
         width: 100%;
         height: 100%;
         background-color: rgba(255, 255, 255, .4);
-        z-index: -200;
+        z-index: 1;
+    }
+    
+    .signup__form{
+        z-index: 3;
     }
 
-    .signup::after{
+    .signup__rectangle{
         clip-path: polygon(0 0, 100% 0, 100% 65%, 0 80%);
+        z-index: 3;
     }
 
     .signup__h1{
         font-size: 4.5em;
     }
 
+    .input__container::before{
+        content: '';
+        position: absolute;
+        width: 80%;
+        height: 1px;
+        bottom: 25px;
+        left: 10%;
+        background-color: #442B48;
+    }
+
     .form__input{
-        padding: 40px 0 20px 0;
+        width: 100%;
+        border: none;
+        border-radius: 15px;
+        padding: 50px 0 30px 0;
     }
 
     .form__input::placeholder{
-        font-size: 2.8em;
+        font-size: 1.7em;
+        color: rgba(68, 43, 72, .5);
+    }
+
+    .input__container::after{
+        content: attr(data-text);
+        color: #442B48;
+        font-weight: bold;
+        position: absolute;
+        font-size: 1.2em;
+        top: 5px;
+        left: 10%;
     }
 
     .conditions-text{
-        font-size: 1.8em;
+        font-size: 1.3em;
     }
 
     .checkbox{
-        height: 60px;
-        width: 60px;
+        height: 50px;
+        width: 50px;
     }
 
     .checkbox:checked::before {
-        font-size: 3.5em;
+        font-size: 3em;
     }
 }
 
@@ -183,14 +228,16 @@ export default {
         background-size: cover;
         display: flex;
         flex-direction: row;
+        height: 100%;
     }
 
-    .signup::after{
+    .signup__rectangle{
         display: none;
     }
 
     .signup__createAccount{
         display: block;
+        z-index: 3;
     }
 
     .signup__rectangle{
@@ -202,10 +249,44 @@ export default {
         order: 2;
     }
 
+    .signup__h1{
+        color: #442B48;
+        width: 70%;
+        text-align: left;
+    }
+
+    .signup__h1--none{
+        display: none;
+    }
+
     .signup__form{
         width: auto;
-        height: 100%;
         order: 1;
+    }
+
+    .form__input{
+        width: 100%;
+        max-width: 800px;
+    }
+
+    .form__input::placeholder{
+        font-size: 1.8em;
+    }
+
+    .form__label{
+        position: absolute;
+        color: red;
+        top: 0;
+        left: 0;
+    }
+
+    .checkbox-box{
+        width: 30%;
+        max-width: 500px;
+    }
+
+    .signup__img{
+        padding: 0;
     }
 }
 

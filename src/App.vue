@@ -46,6 +46,7 @@ html, body{
   padding: 20px 50px;
   color: #fff;
   transition: all .2s ease-in-out;
+  cursor: pointer;
 }
 
 .button:active {
@@ -71,7 +72,18 @@ html, body{
 
 @media (min-width: 1305px){
 
+  .button{
+    font-size: 2.5em;
+    border-radius: 15px;
+    transform: none;
+    padding: 20px 100px;
+    font-weight: bold;
+    background-color: #FF5964;
+    }
 
+  .button__span{
+    transform: none;
+    }
 
 }
 
