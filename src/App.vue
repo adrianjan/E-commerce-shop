@@ -1,33 +1,65 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'Home' }">Home</router-link> |
+      <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
       <router-link :to="{ name: 'SignUp' }">SignUp</router-link> |
-      <router-link :to="{ name: 'LogIn'}">Log in</router-link>
+      <router-link :to="{ name: 'LogIn'}">Log in</router-link> -->
     </div>
     <router-view/>
   </div>
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;700&display=swap');
+
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+*{
+  box-sizing: border-box;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+  color: #fff;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #0E9594;
 }
+
+.flex{
+  display: flex;
+  flex-direction: column;
+}
+
+.button{
+  background-color: #0E9594;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  border: none;
+  padding: 20px 50px;
+  color: #fff;
+  transition: all .2s ease-in-out;
+}
+
+.button:active {
+	transform: scale(1.1);
+	transition: .1s;
+  }
+
+.button__transformed{
+  transform: rotate(-5deg);
+}
+
+.button__span{
+  display: inline-block;
+  transform: rotate(5deg);
+}
+
 </style>
