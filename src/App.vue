@@ -51,7 +51,7 @@ html, body{
     flex-direction: column;
 }
 
-.signup__form, .login__form{
+.signup__form{
     flex-grow: 1;
     align-items: center;
     justify-content: space-evenly;
@@ -76,7 +76,7 @@ html, body{
 }
 
 .input__container{
-    width: 50%;
+    min-width: 50%;
     position: relative;
 }
 
@@ -91,7 +91,7 @@ html, body{
   text-transform: uppercase;
   font-size: 1.5em;
   border: none;
-  padding: 20px 50px;
+  padding: 20px 80px;
   color: #fff;
   transition: all .2s ease-in-out;
   cursor: pointer;
@@ -207,7 +207,7 @@ html, body{
         height: 100%;
     }
 
-        .signup__h1, .login__h1{
+     .signup__h1, .login__h1{
         color: #442B48;
         width: 70%;
         text-align: left;
@@ -236,10 +236,9 @@ html, body{
         max-width: 500px;
     }
 
-    .signup__img, login__img{
+    .signup__img, .login__img, .loginAccount__img{
         padding: 0;
     }
-
 }
 
 </style>

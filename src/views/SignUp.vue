@@ -111,13 +111,6 @@ export default {
 }
 
 @media (min-width: 1305px){
-    .signup{
-        background: url(../assets/bg-3.jpg) no-repeat;
-        background-size: cover;
-        display: flex;
-        flex-direction: row;
-        height: 100%;
-    }
 
     .signup__rectangle{
         display: none;
@@ -126,13 +119,6 @@ export default {
     .signup__createAccount{
         display: block;
         z-index: 3;
-    }
-
-    .signup__rectangle{
-        display: none;
-    }
-
-    .signup__createAccount{
         height: 100%;
         order: 2;
     }
