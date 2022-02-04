@@ -1,14 +1,36 @@
 <template>
   <div id="app">
+    <div class="menuToggler" :class="{ active: isActive }" @click="isActive = !isActive">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
     <div id="nav">
-      <!-- <router-link :to="{ name: 'Home' }">Home</router-link> |
-      <router-link :to="{ name: 'SignUp' }">SignUp</router-link> |
-      <router-link :to="{ name: 'LogIn'}">Log in</router-link> -->
+      <router-link class="router__link" :to="{ name: 'Home' }">Home</router-link> 
+      <router-link class="router__link" :to="{ name: 'SignUp' }">SignUp</router-link> 
+      <router-link class="router__link" :to="{ name: 'LogIn'}">Log in</router-link>
+      <!-- <router-link class="router__link" :to="{ name: 'faq'}">FAQ</router-link>
+      <router-link class="router__link" :to="{ name: 'Shop'}">Shop</router-link> -->
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+   data() {
+     return {
+    isActive: false
+  }},
+
+  methods: {
+    toggleActive(){
+      this.isActive = !this.isActive;
+      console.log(this.isActive)
+    }
+  }
+}
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;700&display=swap');
 
@@ -21,6 +43,11 @@ html, body{
   box-sizing: border-box;
 }
 
+#app{
+  position: relative;
+  overflow: hidden;
+}
+
 #app {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,9 +56,83 @@ html, body{
   color: #fff;
 }
 
+/* Mobile MENU */
+
+#nav{
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FF5964;
+  z-index: 6;
+  transform: translate(100%, -100%) scale(0);
+  transition: transform .3s ease-in-out;
+  border-radius: 50%;
+}
+
+.menuToggler{
+  position: fixed;
+  right: 30px;
+  top: 30px;
+  z-index: 10;
+  width: 60px;
+  height: 40px;
+}
+
+.menuToggler::before{
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 220px;
+  height: 200px;
+  background-color: #FF5964;
+  transition: all .2s ease-in-out;
+  clip-path: circle(78.7% at 76% 0);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.line{
+  width: 60px;
+  height: 5px;
+  background-color: #F5DFBB;
+}
+
+.line:nth-child(1){
+  transform: translateY(80%);
+}
+
+.line:nth-child(2){
+  transform: translateY(230%);
+}
+
+.line:nth-child(3){
+  transform: translateY(380%);
+}
+
+.active	~ #nav{
+  transform: translate(0, 0) scale(1.5);
+}
+
+.active.menuToggler::before{
+   transform: scale(2.3);
+   opacity: 0;
+}
+
 #nav a.router-link-exact-active {
   color: #0E9594;
 }
+
+.router__link{
+  font-size: 1.8677rem;   /* font-size: 2.8rem; - no scale  */
+  text-decoration: none;
+  color: #F5DFBB;
+  font-weight: bold;
+  padding: 5px 0 5px 0;
+  }
 
 .flex{
   display: flex;

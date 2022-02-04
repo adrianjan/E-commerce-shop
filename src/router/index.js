@@ -6,6 +6,7 @@ import SignUp from '../views/SignUp.vue'
 import Account from '../views/Account.vue'
 import NotFound from '../views/NotFound.vue'
 import Shop from '../views/Shop.vue'
+import Faq from '../views/Faq.vue'
 
 Vue.use(VueRouter)
 
@@ -26,14 +27,19 @@ const routes = [
     component: SignUp
   },
   {
-    path: 'account',
+    path: '/account',
     name: 'Account',
     component: Account
   },
   {
-    path: 'shop',
+    path: '/shop',
     name: 'Shop',
     component: Shop
+  },
+  {
+    path: '/faq',
+    name: 'faq',
+    component: Faq
   },
   {
     path: '/:catchAll(.*)',
