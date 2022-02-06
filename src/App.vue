@@ -6,9 +6,12 @@
         <div class="line"></div>
     </div>
     <div id="nav">
-      <router-link class="router__link" :to="{ name: 'Home' }">Home</router-link> 
-      <router-link class="router__link" :to="{ name: 'SignUp' }">SignUp</router-link> 
-      <router-link class="router__link" :to="{ name: 'LogIn'}">Log in</router-link>
+      <router-link class="router__link" :to="{ name: 'Shop'}" v-if="loggedIn">Shop</router-link>
+      <router-link class="router__link" :to="{ name: 'Account'}" v-if="loggedIn">Account</router-link>
+      <router-link class="router__link" :to="{ name: 'Wishlist'}" v-if="loggedIn">Wishlist</router-link>
+      <router-link class="router__link" :to="{ name: 'Home' }" v-if="!loggedIn">Home</router-link> 
+      <router-link class="router__link" :to="{ name: 'SignUp' }" v-if="!loggedIn">SignUp</router-link> 
+      <router-link class="router__link" :to="{ name: 'LogIn'}" v-if="!loggedIn">Log in</router-link>
       <router-link class="router__link router__link--inline router__link--inline-1" :to="{ name: 'faq'}" v-if="loggedIn">FAQ</router-link>
       <router-link class="router__link router__link--inline router__link--inline-2" :to="{ name: 'Shop'}" v-if="loggedIn">CALL</router-link>
     </div>
@@ -21,7 +24,7 @@ export default {
    data() {
      return {
     isActive: false,
-    loggedIn: false
+    loggedIn: true
   }},
 
   methods: {
@@ -85,6 +88,7 @@ html, body{
   z-index: 10;
   width: 60px;
   height: 40px;
+  cursor: pointer;
 }
 
 .menuToggler::before{
@@ -184,8 +188,8 @@ html, body{
 
 /*  Global styles */
 
-.signup, .login{
-    height: 100vh;
+.signup, .login, .shopCover{
+    min-height: 100vh;
     width: 100%;
     background: url(assets/bg-1.png) no-repeat;
     background-size: cover;
@@ -261,7 +265,7 @@ html, body{
     background-color: #FF5964;
   }
 
-   .signup, .login{
+   .signup, .login, .shopCover{
         background: url(assets/bg-2.jpg) no-repeat;
         background-size: cover;
     }
@@ -342,7 +346,7 @@ html, body{
     transform: none;
     }
 
-    .signup, .login{
+    .signup, .login, .shopCover{
         background: url(assets/bg-3.jpg) no-repeat;
         background-size: cover;
         display: flex;

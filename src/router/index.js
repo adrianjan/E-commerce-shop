@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import LogIn from '../views/LogIn.vue'
 import SignUp from '../views/SignUp.vue'
 import Account from '../views/Account.vue'
+import Wishlist from '../views/Wishlist.vue'
 import NotFound from '../views/NotFound.vue'
 import Shop from '../views/Shop.vue'
 import Faq from '../views/Faq.vue'
@@ -35,6 +36,11 @@ const routes = [
     path: '/shop',
     name: 'Shop',
     component: Shop
+  },
+  {
+    path: '/wishlist',
+    name: 'Wishlist',
+    component: Wishlist
   },
   {
     path: '/faq',
