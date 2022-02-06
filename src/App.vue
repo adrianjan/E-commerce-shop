@@ -9,8 +9,8 @@
       <router-link class="router__link" :to="{ name: 'Home' }">Home</router-link> 
       <router-link class="router__link" :to="{ name: 'SignUp' }">SignUp</router-link> 
       <router-link class="router__link" :to="{ name: 'LogIn'}">Log in</router-link>
-      <!-- <router-link class="router__link" :to="{ name: 'faq'}">FAQ</router-link>
-      <router-link class="router__link" :to="{ name: 'Shop'}">Shop</router-link> -->
+      <router-link class="router__link router__link--inline router__link--inline-1" :to="{ name: 'faq'}" v-if="loggedIn">FAQ</router-link>
+      <router-link class="router__link router__link--inline router__link--inline-2" :to="{ name: 'Shop'}" v-if="loggedIn">CALL</router-link>
     </div>
     <router-view/>
   </div>
@@ -20,13 +20,19 @@
 export default {
    data() {
      return {
-    isActive: false
+    isActive: false,
+    loggedIn: false
   }},
 
   methods: {
     toggleActive(){
       this.isActive = !this.isActive;
       console.log(this.isActive)
+    }
+  },
+  watch: {
+    '$route' () {
+      this.isActive = false
     }
   }
 }
@@ -68,7 +74,7 @@ html, body{
   background-color: #FF5964;
   z-index: 6;
   transform: translate(100%, -100%) scale(0);
-  transition: transform .3s ease-in-out;
+  transition: all  .3s ease-in-out;
   border-radius: 50%;
 }
 
@@ -99,10 +105,12 @@ html, body{
   width: 60px;
   height: 5px;
   background-color: #F5DFBB;
+  transition: transform .1s ease-in-out, opacity .2s ease-in;
 }
 
 .line:nth-child(1){
   transform: translateY(80%);
+  opacity: 1;
 }
 
 .line:nth-child(2){
@@ -113,8 +121,22 @@ html, body{
   transform: translateY(380%);
 }
 
+.active .line:nth-child(1){
+  transform: translateY(-680%);
+  opacity: 0;
+}
+
+.active .line:nth-child(2){
+  transform: translateY(230%) rotate(110deg);
+}
+
+.active .line:nth-child(3){
+  transform: translateY(250%) rotate(30deg);
+}
+
 .active	~ #nav{
-  transform: translate(0, 0) scale(1.5);
+  transform: translate(0, 0) scale(1);
+  border-radius: 0;
 }
 
 .active.menuToggler::before{
@@ -127,11 +149,31 @@ html, body{
 }
 
 .router__link{
-  font-size: 1.8677rem;   /* font-size: 2.8rem; - no scale  */
+  font-size: 2.8rem;
   text-decoration: none;
   color: #F5DFBB;
   font-weight: bold;
   padding: 5px 0 5px 0;
+  }
+
+  .router__link--inline{
+    width: 50%;
+    padding: 30px 0;
+    position: absolute;
+    bottom: 0;
+  }
+
+  .router__link--inline-1{
+    background: #0E9594;
+    align-self: flex-start;
+    left: 0;
+  }
+
+  .router__link--inline-2{
+    background: #F5DFBB;
+    color: #0E9594;
+    align-self: flex-end;
+    right: 0;
   }
 
 .flex{
