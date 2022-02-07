@@ -1,4 +1,5 @@
 # My E-commerce Vue.js shop
+## The files are in the branch "master"
 
 >I am building this project from scratch.
 Pure CSS, Vue and Firebase.
