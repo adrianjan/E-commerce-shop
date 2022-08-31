@@ -8,7 +8,7 @@
     <div id="nav">
       <router-link class="router__link" :to="{ name: 'Shop'}" v-if="loggedIn">Shop</router-link>
       <router-link class="router__link" :to="{ name: 'Account'}" v-if="loggedIn">Account</router-link>
-      <router-link class="router__link" :to="{ name: 'Wishlist'}" v-if="loggedIn">Wishlist</router-link>
+      <router-link class="router__link" :to="{ name: 'Home'}" v-if="loggedIn">Home</router-link>
       <router-link class="router__link" :to="{ name: 'Home' }" v-if="!loggedIn">Home</router-link> 
       <router-link class="router__link" :to="{ name: 'SignUp' }" v-if="!loggedIn">SignUp</router-link> 
       <router-link class="router__link" :to="{ name: 'LogIn'}" v-if="!loggedIn">Log in</router-link>
@@ -187,7 +187,6 @@ html, body{
 
 
 /*  Global styles */
-
 .signup, .login, .shopCover{
     min-height: 100vh;
     width: 100%;

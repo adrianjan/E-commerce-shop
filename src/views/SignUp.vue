@@ -8,15 +8,15 @@
             <h1 class="signup__h1">Create your account</h1>
             <img class="signup__img" src="../assets/create-your-account.svg" alt="Create your account">
         </div>
-        <form action="#" class="signup__form flex">
+        <form @submit.prevent="submit" class="signup__form flex">
             <div class="input__container" data-text="Username">
-                <input type="text" name="Username" id="username" class="form__input" placeholder="Username">
+                <input type="text" name="Username" id="username" class="form__input" placeholder="Username" v-model="form.username">
             </div>
             <div class="input__container" data-text="E-mail">
-                <input type="email" name="E-mail" id="email" class="form__input" placeholder="E-mail">
+                <input type="email" name="E-mail" id="email" class="form__input" placeholder="E-mail" v-model="form.email">
             </div>
             <div class="input__container" data-text="Password">
-                <input type="password" name="Password" id="password" class="form__input" placeholder="Password">
+                <input type="password" name="Password" id="password" class="form__input" placeholder="Password" v-model="form.password">
             </div>
             <div class="input__container" data-text="Repeat password">
                 <input type="password" name="Repeat password" id="repeatPassword" class="form__input" placeholder="Repeat password">
@@ -31,9 +31,41 @@
 </template>
 
 <script>
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
 export default {
-    name: 'SignUp'
-}
+    name: 'SignUp',
+data() {
+    return {
+      form: {
+        username: '',
+        email: '',
+        password: ''
+      },
+      error: null
+    };
+  },
+  methods: {
+    submit() {
+        console.log('Submited');
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.form.email, this.form.password)
+        .then(data => {
+          data.user
+            .updateProfile({
+              displayName: this.form.username
+            })
+            .then(() => {});
+        })
+        .catch(err => {
+          this.error = err.message;
+          console.log(err.message);
+        });
+    }
+  }
+};
+
 </script>
 
 <style>
