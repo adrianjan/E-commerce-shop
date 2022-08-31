@@ -2,10 +2,10 @@
   <div class="accountBg">
     <h1 class="accountH1">My Account</h1>
     <h2 class="accountComponentName">CART</h2>
-    <!-- <ul class="accountView">
+    <ul class="accountView">
       <li class="accountView__item" @click="component='cart'">My Cart</li>
       <li class="accountView__item" @click="component='wishlist'">My Wishlist</li>
-    </ul> -->
+    </ul>
     <component :is="component"></component>
     <div class="circle circle--one"></div>
     <div class="circle circle--two"></div>
