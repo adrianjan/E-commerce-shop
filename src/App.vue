@@ -13,13 +13,14 @@
       <router-link class="router__link" :to="{ name: 'SignUp' }" v-if="!loggedIn">SignUp</router-link> 
       <router-link class="router__link" :to="{ name: 'LogIn'}" v-if="!loggedIn">Log in</router-link>
       <router-link class="router__link router__link--inline router__link--inline-1" :to="{ name: 'faq'}" v-if="loggedIn">FAQ</router-link>
-      <router-link class="router__link router__link--inline router__link--inline-2" :to="{ name: 'Shop'}" v-if="loggedIn">CALL</router-link>
+      <div class="router__link router__link--inline router__link--inline-2" @click="signOut" v-if="loggedIn">Sign Out</div>
     </div>
     <router-view/>
   </div>
 </template>
 
 <script>
+import firebase from "firebase/compat/app";
 export default {
    data() {
      return {
@@ -28,7 +29,6 @@ export default {
 
   computed: {
     loggedIn(){
-      console.log('Logged in');
       return this.$store.state.user.loggedIn;
     }
   },
@@ -37,6 +37,16 @@ export default {
     toggleActive(){
       this.isActive = !this.isActive;
       console.log(this.isActive)
+    },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          this.$router.replace({
+            name: "Home"
+          });
+        });
     }
   },
   watch: {
@@ -184,6 +194,7 @@ html, body{
     color: #0E9594;
     align-self: flex-end;
     right: 0;
+    cursor: pointer;
   }
 
 .flex{

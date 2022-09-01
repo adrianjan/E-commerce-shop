@@ -11,18 +11,15 @@ export default new Vuex.Store({
   },
   getters: {
     user(state){
-      console.log(state.user);
       return state.user;
     }
   },
   mutations: {
     SET_LOGGED_IN(state, value) {
       state.user.loggedIn = value;
-      console.log( 'Logged in status', state.user.loggedIn );
     },
     SET_USER(state, data) {
       state.user.data = data;
-      console.log( 'User data', state.user.data );
     }
   },
   actions: {

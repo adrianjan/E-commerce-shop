@@ -18,7 +18,6 @@
 <script>
 import Cart from '../components/Cart.vue'
 import Wishlist from '../components/Wishlist.vue'
-import firebase from "firebase/compat/app";
 
 export default {
   components: {
@@ -35,17 +34,6 @@ export default {
     increment() {
       // `this` will refer to the component instance
       console.log(this.$options.parent.$children)
-    },
-    signOut() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          console.log('Signed out');
-          this.$router.replace({
-            name: "Home"
-          });
-        });
     }
   }
 }
