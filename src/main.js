@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from "./store";
 
 // Import the functions you need from the SDKs you need
 import firebase from "firebase/compat/app";
@@ -25,8 +26,13 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
+
 
 new Vue({
+  store: store,
   router,
   render: h => h(App)
 }).$mount('#app')

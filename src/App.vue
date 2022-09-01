@@ -24,8 +24,14 @@ export default {
    data() {
      return {
     isActive: false,
-    loggedIn: true
   }},
+
+  computed: {
+    loggedIn(){
+      console.log('Logged in');
+      return this.$store.state.user.loggedIn;
+    }
+  },
 
   methods: {
     toggleActive(){
